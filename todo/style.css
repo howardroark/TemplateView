@@ -1,0 +1,6 @@
+.completed .active {
+  display: none;
+}
+.active .completed {
+  display: none;
+}

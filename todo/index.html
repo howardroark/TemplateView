@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<title>TempalteView</title>
+
+<link rel="stylesheet" href="vendor/todomvc-app-css/index.css">
+<link rel="stylesheet" href="style.css">
+
+<footer class="info">
+    <p>Built with <a href="https://github.com/howardroark/TemplateView">TemplateView</a> for <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+
+<script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="vendor/underscore/underscore.js"></script>
+<script type="text/javascript" src="vendor/backbone/backbone.js"></script>
+<script type="text/javascript" src="vendor/morphdom/dist/morphdom-umd.js"></script>
+<script type="text/javascript" src="vendor/nunjucks/browser/nunjucks.js"></script>
+<script type="text/javascript" src="templateview.js"></script>
+
+<script type="text/javascript" src="vendor/backbone.localStorage/backbone.localStorage.js"></script>
+
+<script type="text/javascript" src="script.js"></script>
+
+<script type="text/template" id="mainView" data-prepend-to="body">
+    <section class="todoapp {{ filter }}">
+        <header class="header">
+            <h1>todos</h1>
+        </header>
+        <section class="main">
+            <input class="toggle-all" id="toggle-all" type="checkbox">
+            <ul class="todo-list"></ul>
+        </section>
+        {% if allItems > 0 %}
+        <footer class="footer">
+            <span class="todo-count"><strong>{{ activeItems }}</strong> items left</span>
+            <ul class="filters">
+                <li>
+                    <a {% if filter == "all" %}class="selected"{% endif %} href="#/">All</a>
+                </li>
+                <li>
+                    <a {% if filter == "active" %}class="selected"{% endif %} href="#/active">Active</a>
+                </li>
+                <li>
+                    <a {% if filter == "completed" %}class="selected"{% endif %} href="#/completed">Completed</a>
+                </li>
+            </ul>
+        </footer>
+        {% endif %}
+    </section>
+</script>
+
+<script type="text/template" id="formView" data-insert-after="& header h1">
+    <form>
+        <input class="new-todo" placeholder="What needs to be done?" autofocus="">
+    </form>
+</script>
+
+<script type="text/template" id="itemView" data-append-to="& .todo-list">
+    <li class="{{ status }}">
+        <div class="view">
+            <input class="toggle" type="checkbox" {% if status == "completed" %}checked{% endif %}>
+            <label>{{ label }}</label>
+            <button class="destroy"></button>
+        </div>
+    </li>
+</script>
