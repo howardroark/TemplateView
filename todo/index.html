@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="style.css">
 
 <footer class="info">
+    <p>Double-click to edit a todo</p>
     <p>Built with <a href="https://github.com/howardroark/TemplateView">TemplateView</a> for <a href="http://todomvc.com">TodoMVC</a></p>
 </footer>
 
@@ -55,11 +56,18 @@
 </script>
 
 <script type="text/template" id="itemView" data-append-to="& .todo-list">
+    {% if isEditing %}
+    <li class="{{ status }} editing">
+    {% else %}
     <li class="{{ status }}">
+    {% endif %}
         <div class="view">
             <input class="toggle" type="checkbox" {% if status == "completed" %}checked{% endif %}>
             <label>{{ label }}</label>
             <button class="destroy"></button>
         </div>
+        <form class="editForm">
+            <input class="edit" value="{{ label }}">
+        </form>
     </li>
 </script>

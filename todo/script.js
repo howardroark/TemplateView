@@ -8,7 +8,12 @@ var State = Backbone.Model.extend({
 
 var state = new State({id: 'todos'});
 
-var Todo = Backbone.Model.extend();
+var Todo = Backbone.Model.extend({
+    defaults: {
+        status: 'active',
+        isEditing: false
+    }
+});
 
 var Todos = Backbone.Collection.extend({
     Model: Todo,
@@ -19,9 +24,9 @@ var todos = new Todos();
 
 var Router = Backbone.Router.extend({
     routes: {
-        "":         "all",
-        "completed": "completed",
-        "active":    "active"
+        '':          'all',
+        'completed': 'completed',
+        'active':    'active'
     },
     all: function() {
         state.save({
@@ -44,7 +49,7 @@ var router = new Router();
 
 // UI
 var FormView = TemplateView.extend({
-    template: "#formView",
+    template: '#formView',
     events: {
         'submit':'submit'
     },
@@ -60,15 +65,29 @@ var FormView = TemplateView.extend({
 });
 
 var ItemView = TemplateView.extend({
-    template: "#itemView",
+    template: '#itemView',
     events: {
+        'dblclick':'edit',
+        'submit .editForm':'update',
         'click .toggle':'toggle',
         'click .destroy':'destroy'
     },
+    edit: function(e) {
+        this.model.save({
+            isEditing: true 
+        });
+    },    
+    update: function(e) {
+        this.model.save({
+            isEditing: false,
+            label: e.target[0].value
+        });
+        return false;
+    },
     toggle: function(e) {
-        var status = "active";
+        var status = 'active';
         if(e.target.checked) {
-            status = "completed";
+            status = 'completed';
         }
         this.model.save({
             status: status 
@@ -84,7 +103,7 @@ var MainView = TemplateView.extend({
     SubViews: [FormView],
     model: state,
     collection: todos,
-    template: "#mainView",
+    template: '#mainView',
     templateContext: function() {
         return {
             allItems: this.collection.length,
