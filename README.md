@@ -1,4 +1,7 @@
-# TemplateView [![stability][0]][1]
+# TemplateView
+
+[![stability][0]][1]
+[![Bower version](https://badge.fury.io/bo/templateview.svg)](https://badge.fury.io/bo/templateview)
 
 TemplateView is an extension of Backbone's View class which is inspired by
 Marionette and React.
