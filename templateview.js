@@ -17,7 +17,7 @@ var TemplateView = Backbone.View.extend({
     templateHTML: false,
     sourceDOM: false,
     currentAncestorEl: false,
-    lastUpdate: false,
+    lastUpdateCid: false,
 
     // Context booleans
     isRendered: false,
@@ -181,14 +181,17 @@ var TemplateView = Backbone.View.extend({
         $(this.sourceDOM).remove();
     },
     _onCollectionAdd: function(model) {
-        if(this.ChildView) {
-            if(this.EmptyView && this.emptyView.isRendered) {
-                this.emptyView.destroy();    
+        if(this.ancestorView.lastUpdateCid != model.cid) {
+            if(this.ChildView) {
+                if(this.EmptyView && this.emptyView.isRendered) {
+                    this.emptyView.destroy();    
+                }
+                this.childViews[model.cid] = new this.ChildView({model:model,parentView:this,ancestorView:this.ancestorView});
             }
-            this.childViews[model.cid] = new this.ChildView({model:model,parentView:this,ancestorView:this.ancestorView});
-        }
 
-        this.ancestorView.render();
+            this.ancestorView.render();
+            this.ancestorView.lastUpdateCid = model.cid;
+        }
     },
     _onCollectionRemove: function(model) {
         if(this.ChildView) {
@@ -198,10 +201,16 @@ var TemplateView = Backbone.View.extend({
         this.ancestorView.render();
     },
     _onCollectionChange: function(model) {
-        this.ancestorView.render();
+        if(this.ancestorView.lastUpdateCid != model.cid) {
+            this.ancestorView.render();
+            this.ancestorView.lastUpdateCid = model.cid;
+        }
     },
     _onModelChange: function(model) {
-        this.ancestorView.render();
+        if(this.ancestorView.lastUpdateCid != model.cid) {
+            this.ancestorView.render();
+            this.ancestorView.lastUpdateCid = model.cid;
+        }
     },
     _renderTemplate: function() {
 
