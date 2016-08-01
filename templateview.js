@@ -18,6 +18,7 @@ var TemplateView = Backbone.View.extend({
     sourceDOM: false,
     currentAncestorEl: false,
     lastUpdateCid: false,
+    lastUpdateAttributes: false,
 
     // Context booleans
     isRendered: false,
@@ -181,7 +182,10 @@ var TemplateView = Backbone.View.extend({
         $(this.sourceDOM).remove();
     },
     _onCollectionAdd: function(model) {
-        if(this.ancestorView.lastUpdateCid != model.cid) {
+        if(this.ancestorView.lastUpdateCid != model.cid
+           || this.ancestorView.lastUpdateCid == model.cid
+              && !_.isEqual(this.ancestorView.lastUpdateAttributes, model.attributes)) {
+
             if(this.ChildView) {
                 if(this.EmptyView && this.emptyView.isRendered) {
                     this.emptyView.destroy();    
@@ -189,8 +193,10 @@ var TemplateView = Backbone.View.extend({
                 this.childViews[model.cid] = new this.ChildView({model:model,parentView:this,ancestorView:this.ancestorView});
             }
 
-            this.ancestorView.render();
             this.ancestorView.lastUpdateCid = model.cid;
+            this.ancestorView.lastUpdateAttributes = jQuery.extend(true, {}, model.attributes);
+
+            this.ancestorView.render();
         }
     },
     _onCollectionRemove: function(model) {
@@ -201,15 +207,25 @@ var TemplateView = Backbone.View.extend({
         this.ancestorView.render();
     },
     _onCollectionChange: function(model) {
-        if(this.ancestorView.lastUpdateCid != model.cid) {
-            this.ancestorView.render();
+        if(this.ancestorView.lastUpdateCid != model.cid
+           || this.ancestorView.lastUpdateCid == model.cid
+              && !_.isEqual(this.ancestorView.lastUpdateAttributes, model.attributes)) {
+
             this.ancestorView.lastUpdateCid = model.cid;
+            this.ancestorView.lastUpdateAttributes = jQuery.extend(true, {}, model.attributes);
+
+            this.ancestorView.render();
         }
     },
     _onModelChange: function(model) {
-        if(this.ancestorView.lastUpdateCid != model.cid) {
-            this.ancestorView.render();
+        if(this.ancestorView.lastUpdateCid != model.cid
+           || this.ancestorView.lastUpdateCid == model.cid
+              && !_.isEqual(this.ancestorView.lastUpdateAttributes, model.attributes)) {
+
             this.ancestorView.lastUpdateCid = model.cid;
+            this.ancestorView.lastUpdateAttributes = jQuery.extend(true, {}, model.attributes);
+
+            this.ancestorView.render();
         }
     },
     _renderTemplate: function() {
