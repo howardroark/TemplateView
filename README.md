@@ -3,8 +3,8 @@
 [![stability][0]][1]
 [![Bower version](https://badge.fury.io/bo/templateview.svg)](https://badge.fury.io/bo/templateview)
 
-TemplateView is an extension of Backbone's View class which is inspired by
-Marionette and React.
+TemplateView is an extension of [Backbone][4]'s View class which is inspired by
+[Marionette][5] and [React][6].
 
 The extension aims to offer template designers more control over user experience
 while staying outside of the core codebase. It is built around the use of inline
@@ -255,3 +255,6 @@ $(function() {
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
 [2]: https://github.com/patrick-steele-idem/morphdom
 [3]: https://github.com/howardroark/TemplateView/tree/gh-pages
+[4]: https://github.com/jashkenas/backbone
+[5]: https://github.com/marionettejs/backbone.marionette
+[6]: https://github.com/facebook/react
