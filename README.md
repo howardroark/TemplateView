@@ -4,7 +4,8 @@
 [![Bower version](https://badge.fury.io/bo/templateview.svg)](https://badge.fury.io/bo/templateview)
 
 TemplateView is an extension of [Backbone][4]'s View class which is inspired by
-[Marionette][5] and [React][6].
+[Marionette][5] and [React][6].  It aims to enable a Flux inspired architechture
+built around Backbone's core components.
 
 The extension aims to offer template designers more control over user experience
 while staying outside of the core codebase. It is built around the use of inline
