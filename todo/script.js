@@ -71,8 +71,8 @@ var ItemView = TemplateView.extend({
         });
         $(e.currentTarget).find('input').focus().select();
     },
-    escape: function(e) {
-        if(e.which === 27) {
+    escape: function (e) {
+        if (e.which === 27) {
             this.model.save({
                 isEditing: false
             });
