@@ -116,7 +116,6 @@ var MainView = TemplateView.extend({
         for (var i = 0; i < this.collection.length; i++) {
             this.collection.models[i].save('status', status);
         }
-        return false;
     },
     clearCompleted: function () {
         var completedItems = this.collection.where({ status: 'completed' });
