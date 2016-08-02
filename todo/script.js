@@ -103,17 +103,26 @@ var MainView = TemplateView.extend({
         };
     },
     events: {
-        'click .toggle-all':'toggleAll'
+        'click .toggle-all':'toggleAll',
+        'click .clear-completed':'clearCompleted'
     },
-    toggleAll: function (e) {
-        var activeItems = this.collection.where({ status: 'active' }).length;
+    toggleAll: function () {
+        var activeItems = this.collection.where({ status: 'active' });
         var status = 'completed';
-        if (activeItems === 0) {
+        if (activeItems.length === 0) {
             status = 'active';
         }
         //TODO: Find a more efficient way of doing this
         for (var i = 0; i < this.collection.length; i++) {
             this.collection.models[i].save('status', status);
+        }
+        return false;
+    },
+    clearCompleted: function () {
+        var completedItems = this.collection.where({ status: 'completed' });
+        //TODO: Find a more efficient way of doing this
+        for (var i = 0; i < completedItems.length; i++) {
+            completedItems[i].save('status', 'active');
         }
         return false;
     }

@@ -43,6 +43,7 @@
                     <a {% if filter == "completed" %}class="selected"{% endif %} href="#/completed">Completed</a>
                 </li>
             </ul>
+            <button class="clear-completed" {% if activeItems >= allItems %}style="display: none;"{% endif %}>Clear completed</button>
         </footer>
     </section>
 </script>
