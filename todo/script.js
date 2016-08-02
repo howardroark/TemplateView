@@ -60,6 +60,7 @@ var ItemView = TemplateView.extend({
     events: {
         dblclick:'edit',
         'submit .editForm':'update',
+        'blur input':'update',
         'click .toggle':'toggle',
         'click .destroy':'destroy'
     },
@@ -70,9 +71,15 @@ var ItemView = TemplateView.extend({
         $(e.currentTarget).find('input').focus().select();
     },
     update: function (e) {
+        var label;
+        if(e.target.nodeName == 'INPUT') {
+            label = e.target.value; 
+        } else {
+            label = e.target[0].value; 
+        }
         this.model.save({
             isEditing: false,
-            label: e.target[0].value
+            label: label 
         });
         return false;
     },
