@@ -122,7 +122,7 @@ var MainView = TemplateView.extend({
         var completedItems = this.collection.where({ status: 'completed' });
         //TODO: Find a more efficient way of doing this
         for (var i = 0; i < completedItems.length; i++) {
-            completedItems[i].save('status', 'active');
+            completedItems[i].destroy();
         }
         return false;
     }
