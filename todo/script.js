@@ -72,14 +72,14 @@ var ItemView = TemplateView.extend({
     },
     update: function (e) {
         var label;
-        if(e.target.nodeName == 'INPUT') {
-            label = e.target.value; 
+        if (e.target.nodeName == 'INPUT') {
+            label = e.target.value;
         } else {
-            label = e.target[0].value; 
+            label = e.target[0].value;
         }
         this.model.save({
             isEditing: false,
-            label: label 
+            label: label
         });
         return false;
     },
