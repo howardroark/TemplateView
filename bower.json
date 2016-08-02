@@ -14,7 +14,7 @@
   ],
   "devDependencies": {
     "backbone.localStorage": "^1.1.16",
-    "todomvc-app-css": "tastejs/todomvc-app-css#^2.0.6",
+    "todomvc-app-css": "^2.0.6",
     "templateview": "^0.0.3"
   },
   "dependencies": {
