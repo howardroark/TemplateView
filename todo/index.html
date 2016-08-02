@@ -31,7 +31,7 @@
             <ul class="todo-list"></ul>
         </section>
         <footer class="footer" {% if allItems == 0 %}style="display: none;"{% endif %}>
-            <span class="todo-count"><strong>{{ activeItems }}</strong> items left</span>
+            <span class="todo-count"><strong>{{ activeItems }}</strong> item{% if activeItems > 1 %}s{% endif %} left</span>
             <ul class="filters">
                 <li>
                     <a {% if filter == "all" %}class="selected"{% endif %} href="#/">All</a>
