@@ -100,7 +100,22 @@ var MainView = TemplateView.extend({
         return {
             allItems: this.collection.length,
             activeItems: this.collection.where({ status: 'active' }).length
+        };
+    },
+    events: {
+        'click .toggle-all':'toggleAll'
+    },
+    toggleAll: function(e) {
+        var activeItems = this.collection.where({ status: 'active' }).length;
+        var status = 'completed';
+        if(activeItems === 0) {
+            status = 'active';
         }
+        //TODO: Find a more efficient way of doing this
+        for(var i = 0; i < this.collection.length; i++) {
+            this.collection.models[i].save('status', status);
+        }
+        return false;
     }
 });
 

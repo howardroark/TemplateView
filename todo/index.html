@@ -27,7 +27,9 @@
             <h1>todos</h1>
         </header>
         <section class="main">
+            {% if allItems > 0 %}
             <input class="toggle-all" id="toggle-all" type="checkbox">
+            {% endif %}
             <ul class="todo-list"></ul>
         </section>
         {% if allItems > 0 %}
