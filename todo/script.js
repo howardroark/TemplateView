@@ -59,6 +59,7 @@ var ItemView = TemplateView.extend({
     template: '#itemView',
     events: {
         dblclick:'edit',
+        keydown: 'escape',
         'submit .editForm':'update',
         'blur input':'update',
         'click .toggle':'toggle',
@@ -69,6 +70,13 @@ var ItemView = TemplateView.extend({
             isEditing: true
         });
         $(e.currentTarget).find('input').focus().select();
+    },
+    escape: function(e) {
+        if(e.which === 27) {
+            this.model.save({
+                isEditing: false
+            });
+        }
     },
     update: function (e) {
         var label;
