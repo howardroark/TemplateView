@@ -27,7 +27,7 @@ var Router = Backbone.Router.extend({
         '*filter':'setFilter'
     },
     setFilter: function (filter) {
-        if(filter === null) {
+        if (filter === null) {
             filter = 'all';
         }
         state.save({
@@ -78,7 +78,7 @@ var ItemView = TemplateView.extend({
     },
     toggle: function (e) {
         var status = 'active';
-        if(e.target.checked) {
+        if (e.target.checked) {
             status = 'completed';
         }
         this.model.save({
