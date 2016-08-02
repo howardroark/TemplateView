@@ -65,7 +65,7 @@ var ItemView = TemplateView.extend({
     },
     edit: function (e) {
         this.model.save({
-            isEditing: true 
+            isEditing: true
         });
         $(e.currentTarget).find('input').focus().select();
     },
