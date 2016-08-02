@@ -24,23 +24,14 @@ var todos = new Todos();
 
 var Router = Backbone.Router.extend({
     routes: {
-        '':          'all',
-        'completed': 'completed',
-        'active':    'active'
+        '*filter':'setFilter'
     },
-    all: function() {
+    setFilter: function(filter) {
+        if(filter === null) {
+            filter = 'all';
+        }
         state.save({
-            filter: 'all'
-        });
-    },
-    completed: function() {
-        state.save({
-            filter: 'completed'
-        });
-    },
-    active: function() {
-        state.save({
-            filter: 'active'
+            filter: filter
         });
     }
 });
