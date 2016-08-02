@@ -26,7 +26,7 @@ var Router = Backbone.Router.extend({
     routes: {
         '*filter':'setFilter'
     },
-    setFilter: function(filter) {
+    setFilter: function (filter) {
         if(filter === null) {
             filter = 'all';
         }
@@ -44,7 +44,7 @@ var FormView = TemplateView.extend({
     events: {
         'submit':'submit'
     },
-    submit: function(e) {
+    submit: function (e) {
         var todo = new Todo({
             status: "active",
             label: e.target[0].value
@@ -63,20 +63,20 @@ var ItemView = TemplateView.extend({
         'click .toggle':'toggle',
         'click .destroy':'destroy'
     },
-    edit: function(e) {
+    edit: function (e) {
         this.model.save({
             isEditing: true 
         });
         $(e.currentTarget).find('input').focus().select();
     },    
-    update: function(e) {
+    update: function (e) {
         this.model.save({
             isEditing: false,
             label: e.target[0].value
         });
         return false;
     },
-    toggle: function(e) {
+    toggle: function (e) {
         var status = 'active';
         if(e.target.checked) {
             status = 'completed';
@@ -85,7 +85,7 @@ var ItemView = TemplateView.extend({
             status: status 
         });
     },
-    destroy: function(e) {
+    destroy: function (e) {
         this.model.destroy();
     }
 });
@@ -96,7 +96,7 @@ var MainView = TemplateView.extend({
     model: state,
     collection: todos,
     template: '#mainView',
-    templateContext: function() {
+    templateContext: function () {
         return {
             allItems: this.collection.length,
             activeItems: this.collection.where({ status: 'active' }).length
@@ -106,7 +106,7 @@ var MainView = TemplateView.extend({
 
 var main = new MainView();
 
-$(function() {
+$(function () {
     Backbone.history.start();
     state.fetch();
     todos.fetch();
