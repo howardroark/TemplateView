@@ -46,7 +46,7 @@ var FormView = TemplateView.extend({
     },
     submit: function (e) {
         var todo = new Todo({
-            status: "active",
+            status: 'active',
             label: e.target[0].value
         });
         this.collection.add(todo);
@@ -68,7 +68,7 @@ var ItemView = TemplateView.extend({
             isEditing: true 
         });
         $(e.currentTarget).find('input').focus().select();
-    },    
+    },
     update: function (e) {
         this.model.save({
             isEditing: false,
@@ -82,7 +82,7 @@ var ItemView = TemplateView.extend({
             status = 'completed';
         }
         this.model.save({
-            status: status 
+            status: status
         });
     },
     destroy: function (e) {
