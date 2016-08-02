@@ -4,8 +4,10 @@
     "install": "bower install",
     "start": "harp server todo & browser-sync start --proxy http://localhost:9000 --files templateview.js --files todo",
     "compile": "harp compile todo www && rm www/templateview.js",
-    "update":"cd www && sed -ie 's;templateview.js;vendor/templateview/templateview.js;g' index.html && rm index.htmle",
-    "deploy": "npm run compile && npm run update && git checkout --orphan gh-pages && git rm -rf . && git add www && git commit -m 'deploy' && git push origin :gh-pages && git subtree push --prefix=www origin gh-pages && git checkout develop && git branch -D gh-pages && rm -rf www"
+    "update":"cd www && sed -i.bak 's;templateview.js;vendor/templateview/templateview.js;g' index.html && rm index.html.bak",
+    "deploy": "npm run compile && npm run update && git checkout --orphan gh-pages && git rm -rf . && git add www && git commit -m 'deploy' && git push origin :gh-pages && git subtree push --prefix=www origin gh-pages && git checkout develop && git branch -D gh-pages && rm -rf www",
+    "convert":"cd www && sed -i.bak $'s/    /\t/g' script.js && rm script.js.bak",
+    "copy":"npm run compile && npm run update && npm run convert && rm -rf ../todomvc/examples/templateview && cp -r www ../todomvc/examples/templateview && rm -rf www"
   },
   "repository": {
     "type": "git",
