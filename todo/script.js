@@ -77,10 +77,14 @@ var ItemView = TemplateView.extend({
         } else {
             label = e.target[0].value;
         }
-        this.model.save({
-            isEditing: false,
-            label: label
-        });
+        if (label === '') {
+            this.model.destroy();
+        } else {
+            this.model.save({
+                isEditing: false,
+                label: label
+            });
+        }
         return false;
     },
     toggle: function (e) {
@@ -119,14 +123,12 @@ var MainView = TemplateView.extend({
         if (activeItems.length === 0) {
             status = 'active';
         }
-        //TODO: Find a more efficient way of doing this
         for (var i = 0; i < this.collection.length; i++) {
             this.collection.models[i].save('status', status);
         }
     },
     clearCompleted: function () {
         var completedItems = this.collection.where({ status: 'completed' });
-        //TODO: Find a more efficient way of doing this
         for (var i = 0; i < completedItems.length; i++) {
             completedItems[i].destroy();
         }
