@@ -36,13 +36,13 @@ var Router = Backbone.Router.extend({
     }
 });
 
-var router = new Router();
+new Router();
 
 // UI
 var FormView = TemplateView.extend({
     template: '#formView',
     events: {
-        'submit':'submit'
+        submit:'submit'
     },
     submit: function (e) {
         var todo = new Todo({
@@ -58,7 +58,7 @@ var FormView = TemplateView.extend({
 var ItemView = TemplateView.extend({
     template: '#itemView',
     events: {
-        'dblclick':'edit',
+        dblclick:'edit',
         'submit .editForm':'update',
         'click .toggle':'toggle',
         'click .destroy':'destroy'
