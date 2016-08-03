@@ -60,8 +60,8 @@ var ItemView = TemplateView.extend({
     events: {
         dblclick:'edit',
         keydown: 'escape',
-        'submit .editForm':'update',
-        'blur input':'update',
+        'submit .editForm':'submitForm',
+        'blur .edit':'blurInput',
         'click .toggle':'toggle',
         'click .destroy':'destroy'
     },
@@ -78,13 +78,15 @@ var ItemView = TemplateView.extend({
             });
         }
     },
-    update: function (e) {
-        var label;
-        if (e.target.nodeName == 'INPUT') {
-            label = e.target.value;
-        } else {
-            label = e.target[0].value;
-        }
+    submitForm: function (e) {
+        this.update(e.target[0].value);
+        return false;
+    },
+    blurInput: function (e) {
+        this.update(e.target.value);
+        return false;
+    },
+    update: function (label) {
         if (label === '') {
             this.model.destroy();
         } else {
@@ -93,7 +95,6 @@ var ItemView = TemplateView.extend({
                 label: label
             });
         }
-        return false;
     },
     toggle: function (e) {
         var status = 'active';
