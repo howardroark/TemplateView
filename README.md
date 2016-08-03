@@ -20,6 +20,8 @@ enough logic to set up the various UI states that an app may require.
 Much like how React works with a virtual dom to allow for this, TemplateView works
 with the [morphdom][8] to accomplish DOM diffing.
 
+> Note: This is still experimental, but that also means you can help make it better!
+
 You can find an example "todomvc" app [here][9].
 
 ### Install
