@@ -22,6 +22,7 @@ var TemplateView = Backbone.View.extend({
         attributes: false,
         eventType: false
     },
+    lastRender: 0,
 
     // Context booleans
     isRendered: false,
@@ -50,22 +51,18 @@ var TemplateView = Backbone.View.extend({
            && this.parentView
            && this.parentView.model) {
             this.model = this.parentView.model;
+        } else if (this.model) {
+            this.listenTo(this.model, 'change', this._onModelChange);
         }
 
         if(!this.collection
            && this.parentView
            && this.parentView.collection) {
             this.collection = this.parentView.collection;
-        }
-
-        if(this.collection) {
+        } else if (this.collection) {
             this.listenTo(this.collection, 'add', this._onCollectionAdd);
             this.listenTo(this.collection, 'remove', this._onCollectionRemove);
             this.listenTo(this.collection, 'change', this._onCollectionChange);
-        }
-
-        if(this.model) {
-            this.listenTo(this.model, 'change', this._onModelChange);
         }
 
         if(this.initialize) {
@@ -87,12 +84,33 @@ var TemplateView = Backbone.View.extend({
         }
 
     },
-    render: function() {
-        this.onBeforeRender();
+    render: function(bypassGate) {
 
         if(this.isAncestorView) {
+            // The block below is meant to ensure that excess events do not cause excess rendering.
+            // TODO: Test and optimize this, or even better would be to find a better way of handling it.
+            var now = Date.now();
+            if(typeof bypassGate == 'undefined') {
+                bypassGate = false;
+            }
+            if(now - this.lastRender < 250 && !bypassGate) {
+                var _this = this;
+                var then = now;
+                window.setTimeout(function() {
+                    var now = Date.now();
+                    if(then == _this.lastRender) {
+                        _this.render(true);
+                    }
+                }, 5);
+                this.lastRender = now;
+                return;
+            }
+
+            this.lastRender = now;
             this._initSourceDOM();
         }
+
+        this.onBeforeRender();
 
         var renderedHTML = this._renderTemplate();
 
