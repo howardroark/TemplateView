@@ -6,7 +6,7 @@
 ## What?
 
 TemplateView is an extension of [Backbone][4]'s View class which is inspired by
-[Marionette][5] and [React][6].  It aims to enable a [Flux][7] inspired architechture
+[Marionette][5] and [React][6].  It aims to enable a [Flux][7] style architechture
 built around Backbone's core components. Essentially you create a tree of
 View/Templates and render it each time the data's state changes.  This offers the
 opportunity to design schemas that work really well with templates.
