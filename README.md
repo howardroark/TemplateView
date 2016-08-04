@@ -3,21 +3,24 @@
 [![stability][0]][1]
 [![Bower version][2]][3]
 
+## What?
+
 TemplateView is an extension of [Backbone][4]'s View class which is inspired by
-[Marionette][5] and [React][6].  It aims to enable a [Flux][7] inspired architechture
-built around Backbone's core components.
+[Marionette][5] and [React][6].  It aims to enable a [Flux][7] style architechture
+built around Backbone's core components. Essentially you create a tree of
+View/Templates and render it each time the data's state changes.  This offers the
+opportunity to design schemas that work really well with templates and keep views
+small.
 
 The extension aims to offer template designers more control over user experience
 while staying outside of the core codebase. It is built around the use of inline
-templates as a means of efficient prototyping.
+templates as a means of efficient prototyping.  The template sandbox offers just
+enough logic to set up the various UI states that an app may require.
 
-At it's core it shares a few things in common with libraries like React.  It is
-designed to render all nested views in the event of any state change.  Much like
-how React works with a virtual dom to allow for this, TemplateView works with the
-concept of [DOM diffing][8]. Where it differs is that instead of combining views
-and templates via JSX, TemplateView keeps views simple and aims for most of the 
-work to occur in the templates.  All you really need is a smart schema design to
-drive your templates.
+Much like how React works with a virtual dom to allow for this, TemplateView works
+with the [morphdom][8] to accomplish DOM diffing.
+
+> Note: This is still experimental, but that also means you can help make it better!
 
 You can find an example "todomvc" app [here][9].
 
