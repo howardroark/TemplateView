@@ -81,8 +81,8 @@ var TemplateView = Backbone.View.extend({
     render: function(bypass) {
 
         if(this.isAncestorView) {
-            // The block below is meant to ensure that excess events do not cause excess rendering.
-            // TODO: Test and optimize this, or even better would be to find a better way of handling it.
+            /* The block below is meant to ensure that excess events do not cause excess rendering.
+               TODO: Test and optimize this, or even better would be to find a better way of handling it.*/
             if(typeof bypass == 'undefined') {
                 bypass = false;
             }
@@ -98,8 +98,9 @@ var TemplateView = Backbone.View.extend({
                 }, 5);
                 return;
             }
-
             this.lastRender = now;
+            /* endblock */
+
             this._initSourceDOM();
         }
 
