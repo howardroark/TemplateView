@@ -4,11 +4,6 @@
 
 <link rel="stylesheet" href="vendor/todomvc-app-css/index.css">
 
-<footer class="info">
-    <p>Double-click to edit a todo</p>
-    <p>Built with <a href="https://github.com/howardroark/TemplateView">TemplateView</a> for <a href="http://todomvc.com">TodoMVC</a></p>
-</footer>
-
 <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="vendor/underscore/underscore.js"></script>
 <script type="text/javascript" src="vendor/backbone/backbone.js"></script>
@@ -21,30 +16,37 @@
 <script type="text/javascript" src="script.js"></script>
 
 <script type="text/template" id="mainView" data-prepend-to="body">
-    <section class="todoapp">
-        <header class="header">
-            <h1>todos</h1>
-        </header>
-        <section class="main" {% if allItems == 0 %}style="display: none;"{% endif %}>
-            <input class="toggle-all" id="toggle-all" type="checkbox" {% if activeItems == 0 and allItems != 0 %}checked{% endif %}>
-            <ul class="todo-list"></ul>
+    <div class="container">
+        <!-- ^ Like React you always need a single container ^ -->
+        <section class="todoapp">
+            <header class="header">
+                <h1>todos</h1>
+            </header>
+            <section class="main" {% if allItems == 0 %}style="display: none;"{% endif %}>
+                <input class="toggle-all" id="toggle-all" type="checkbox" {% if activeItems == 0 and allItems != 0 %}checked{% endif %}>
+                <ul class="todo-list"></ul>
+            </section>
+            <footer class="footer" {% if allItems == 0 %}style="display: none;"{% endif %}>
+                <span class="todo-count"><strong>{{ activeItems }}</strong> item{% if activeItems > 1 %}s{% endif %} left</span>
+                <ul class="filters">
+                    <li>
+                        <a {% if filter == "all" %}class="selected"{% endif %} href="#/">All</a>
+                    </li>
+                    <li>
+                        <a {% if filter == "active" %}class="selected"{% endif %} href="#/active">Active</a>
+                    </li>
+                    <li>
+                        <a {% if filter == "completed" %}class="selected"{% endif %} href="#/completed">Completed</a>
+                    </li>
+                </ul>
+                <button class="clear-completed" {% if activeItems >= allItems %}style="display: none;"{% endif %}>Clear completed</button>
+            </footer>
         </section>
-        <footer class="footer" {% if allItems == 0 %}style="display: none;"{% endif %}>
-            <span class="todo-count"><strong>{{ activeItems }}</strong> item{% if activeItems > 1 %}s{% endif %} left</span>
-            <ul class="filters">
-                <li>
-                    <a {% if filter == "all" %}class="selected"{% endif %} href="#/">All</a>
-                </li>
-                <li>
-                    <a {% if filter == "active" %}class="selected"{% endif %} href="#/active">Active</a>
-                </li>
-                <li>
-                    <a {% if filter == "completed" %}class="selected"{% endif %} href="#/completed">Completed</a>
-                </li>
-            </ul>
-            <button class="clear-completed" {% if activeItems >= allItems %}style="display: none;"{% endif %}>Clear completed</button>
+        <footer class="info">
+            <p>Double-click to edit a todo</p>
+            <p>Built with <a href="https://github.com/howardroark/TemplateView">TemplateView</a> for <a href="http://todomvc.com">TodoMVC</a></p>
         </footer>
-    </section>
+    </div>
 </script>
 
 <script type="text/template" id="formView" data-insert-after="& header h1">
