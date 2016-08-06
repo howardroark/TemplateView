@@ -12,6 +12,7 @@ var TemplateView = Backbone.View.extend({
     ancestorView: false,
 
     // Context globals
+    state: false,
     templateConfig: false,
     templateEl: false,
     templateHTML: false,
@@ -40,6 +41,10 @@ var TemplateView = Backbone.View.extend({
         if(!this.parentView) {
             this.ancestorView = this;
             this.isAncestorView = true;
+        }
+
+        if(this.state) {
+            this.listenTo(this.state, 'change', this._onModelChange);
         }
 
         if(!this.model
@@ -227,6 +232,10 @@ var TemplateView = Backbone.View.extend({
         this.templateHTML = this.templateEl.innerHTML;
 
         var context = {};
+
+        if(this.ancestorView.state) {
+            context = $.extend({}, context, this.ancestorView.state.attributes);
+        }
 
         if(this.model) {
             context = $.extend({}, context, this.model.attributes);

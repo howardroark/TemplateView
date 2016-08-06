@@ -113,7 +113,7 @@ var ItemView = TemplateView.extend({
 var MainView = TemplateView.extend({
     ChildView: ItemView,
     SubViews: [FormView],
-    model: state,
+    state: state,
     collection: todos,
     template: '#mainView',
     templateContext: function () {

@@ -22,7 +22,7 @@
 <script type="text/javascript" src="script.js"></script>
 
 <script type="text/template" id="mainView" data-prepend-to="body">
-    <section class="todoapp {{ filter }}">
+    <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
         </header>
@@ -55,11 +55,19 @@
 </script>
 
 <script type="text/template" id="itemView" data-append-to="& .todo-list">
-    {% if isEditing %}
-    <li class="{{ status }} editing">
+    {% if status == filter or filter == 'all' %}
+        {% set display = 'block' %}
     {% else %}
-    <li class="{{ status }}">
+        {% set display = 'none' %}
     {% endif %}
+
+    {% if isEditing %}
+        {% set class = 'editing' %}
+    {% else %}
+        {% set class = '' %}
+    {% endif %}
+
+    <li class="{{ class }}" style="display: {{ display }};">
         <div class="view">
             <input class="toggle" type="checkbox" {% if status == "completed" %}checked{% endif %}>
             <label>{{ label }}</label>
