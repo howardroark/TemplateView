@@ -35,7 +35,7 @@ var TemplateView = Backbone.View.extend({
     constructor: function(options) {
 
         for(var key in options) {
-            this[key] = options[key]
+            this[key] = options[key];
         }
 
         if(!this.parentView) {
@@ -47,17 +47,13 @@ var TemplateView = Backbone.View.extend({
             this.listenTo(this.state, 'change', this._onModelChange);
         }
 
-        if(!this.model
-           && this.parentView
-           && this.parentView.model) {
+        if(!this.model && this.parentView && this.parentView.model) {
             this.model = this.parentView.model;
         } else if (this.model) {
             this.listenTo(this.model, 'change', this._onModelChange);
         }
 
-        if(!this.collection
-           && this.parentView
-           && this.parentView.collection) {
+        if(!this.collection && this.parentView && this.parentView.collection) {
             this.collection = this.parentView.collection;
         } else if (this.collection) {
             this.listenTo(this.collection, 'add', this._onCollectionAdd);
@@ -69,9 +65,7 @@ var TemplateView = Backbone.View.extend({
             this.initialize(options);
         }
 
-        if(this.ChildView
-           && this.collection
-           && this.collection.length) {
+        if(this.ChildView && this.collection && this.collection.length) {
             this._addChildViews();
         }
 
@@ -84,25 +78,24 @@ var TemplateView = Backbone.View.extend({
         }
 
     },
-    render: function(bypassGate) {
+    render: function(bypass) {
 
         if(this.isAncestorView) {
             // The block below is meant to ensure that excess events do not cause excess rendering.
             // TODO: Test and optimize this, or even better would be to find a better way of handling it.
-            var now = Date.now();
-            if(typeof bypassGate == 'undefined') {
-                bypassGate = false;
+            if(typeof bypass == 'undefined') {
+                bypass = false;
             }
-            if(now - this.lastRender < 250 && !bypassGate) {
+            var now = Date.now();
+            if((now - this.lastRender < 250 || !this.lastRender) && !bypass) {
                 var _this = this;
                 var then = now;
+                this.lastRender = now;
                 window.setTimeout(function() {
-                    var now = Date.now();
                     if(then == _this.lastRender) {
                         _this.render(true);
                     }
                 }, 5);
-                this.lastRender = now;
                 return;
             }
 
@@ -171,7 +164,7 @@ var TemplateView = Backbone.View.extend({
             var selector = attachOptions.selector;
 
             var $targetEl;
-            if(selector.indexOf('&') == 0) {
+            if(selector.indexOf('&') === 0) {
                 $targetEl = this.parentView.$el.find(selector.substring(1)); 
             } else {
                 $targetEl = $(selector); 
@@ -188,7 +181,7 @@ var TemplateView = Backbone.View.extend({
                             var selector = events[type][i].selector;
 
                             var $el = $(fromEl);
-                            if(selector != '') {
+                            if(selector !== '') {
                                 $el = $el.find(selector); 
                             }
 
@@ -197,7 +190,7 @@ var TemplateView = Backbone.View.extend({
                     }
                     return true;
                 }
-            })
+            });
         }
 
         $(this.sourceDOM).remove();
@@ -286,7 +279,7 @@ var TemplateView = Backbone.View.extend({
         var selector = attachOptions.selector;
 
         if(typeof selector == 'undefined') {
-            return
+            return;
         }
 
         if(this.isAncestorView) {
