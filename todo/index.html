@@ -63,12 +63,12 @@
     {% endif %}
 
     {% if isEditing %}
-        {% set class = 'editing' %}
+        {% set className = status + ' editing' %}
     {% else %}
-        {% set class = '' %}
+        {% set className = status %}
     {% endif %}
 
-    <li class="{{ class }}" style="display: {{ display }};">
+    <li class="{{ className }}" style="display: {{ display }};">
         <div class="view">
             <input class="toggle" type="checkbox" {% if status == "completed" %}checked{% endif %}>
             <label>{{ label }}</label>
