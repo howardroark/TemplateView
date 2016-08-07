@@ -14,15 +14,16 @@ small.
 
 The extension aims to offer template designers more control over user experience
 while staying outside of the core codebase. It is built around the use of inline
-templates as a means of efficient prototyping.  The template sandbox offers just
-enough logic to set up the various UI states that an app may require.
+templates as a means of efficient prototyping.  The default template engine is 
+[Nunjucks][8] which offers a great sandbox with just enough logic to set up the
+various UI states that an app may require.
 
 Much like how React works with a virtual dom to allow for this, TemplateView works
-with [morphdom][8] to accomplish DOM diffing.
+with [morphdom][9] to accomplish DOM diffing.
 
 > Note: This is still experimental, but that also means you can help make it better!
 
-You can find an example "todomvc" app [here][9].
+You can find an example "todomvc" app [here][10].
 
 ### Install
 
@@ -45,5 +46,6 @@ $ npm start
 [5]: https://github.com/marionettejs/backbone.marionette
 [6]: https://github.com/facebook/react
 [7]: https://facebook.github.io/flux/docs/overview.html
-[8]: https://github.com/patrick-steele-idem/morphdom
-[9]: https://github.com/howardroark/TemplateView/tree/gh-pages
+[8]: https://github.com/mozilla/nunjucks
+[9]: https://github.com/patrick-steele-idem/morphdom
+[10]: https://github.com/howardroark/TemplateView/tree/gh-pages
