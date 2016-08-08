@@ -5,7 +5,7 @@
 
 ## What?
 
-TemplateView is an extension of [Backbone][4]'s View class which is inspired by
+TemplateView is an extension of [Backbone][4]'s View class, and is inspired by
 [Marionette][5] and [React][6].  It aims to enable you to build a [Flux][7] style
 architechture with Backbone's core components. Essentially you create a tree of
 View+Template combos and render the entire tree each time the data's state changes.
