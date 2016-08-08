@@ -8,9 +8,9 @@
 TemplateView is an extension of [Backbone][4]'s View class which is inspired by
 [Marionette][5] and [React][6].  It aims to enable you to build a [Flux][7] style
 architechture with Backbone's core components. Essentially you create a tree of
-View/Templates and render it each time the data's state changes.  This offers the
-opportunity to design schemas that work really well with templates and keep views
-small.
+View+Template combos and render the entire tree each time the data's state changes.
+This offers the opportunity to design schemas that work really well with templates
+and keep views small.
 
 The extension aims to offer template designers more control over user experience
 while staying outside of the core codebase. It is built around the use of inline
@@ -29,6 +29,7 @@ You can find an example "todomvc" app [here][10].
 
 ```
 $ bower install templateview
+
 ```
 
 ### Develop
