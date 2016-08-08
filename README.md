@@ -29,7 +29,6 @@ You can find an example "todomvc" app [here][10].
 
 ```
 $ bower install templateview
-
 ```
 
 ### Develop
