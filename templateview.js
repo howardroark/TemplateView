@@ -13,6 +13,8 @@ var TemplateView = Backbone.View.extend({
 
     // Context globals
     state: false,
+    model: false,
+    collection: false,
     templateConfig: false,
     templateEl: false,
     templateHTML: false,
@@ -47,19 +49,23 @@ var TemplateView = Backbone.View.extend({
             this.listenTo(this.state, 'change', this._onModelChange);
         }
 
-        if(!this.model && this.parentView && this.parentView.model) {
-            this.model = this.parentView.model;
-        } else if (this.model) {
+        if (this.model) {
             this.listenTo(this.model, 'change', this._onModelChange);
         }
 
-        if(!this.collection && this.parentView && this.parentView.collection) {
-            this.collection = this.parentView.collection;
-        } else if (this.collection) {
+        if(!this.model && this.parentView && this.parentView.model) {
+            this.model = this.parentView.model;
+        } 
+
+        if (this.collection) {
             this.listenTo(this.collection, 'add', this._onCollectionAdd);
             this.listenTo(this.collection, 'remove', this._onCollectionRemove);
             this.listenTo(this.collection, 'change', this._onCollectionChange);
         }
+
+        if(!this.collection && this.parentView && this.parentView.collection) {
+            this.collection = this.parentView.collection;
+        } 
 
         if(this.initialize) {
             this.initialize(options);
