@@ -15,7 +15,7 @@ and keep views small.
 The extension aims to offer template designers more control over user experience
 while staying outside of the core codebase. It is built around the use of inline
 templates as a means of efficient prototyping.  The default template engine is 
-[Nunjucks][8] which offers a great sandbox with just enough logic to set up the
+[Nunjucks][8], which offers a great sandbox with just enough logic to set up the
 various UI states that an app may require.
 
 Much like how React works with a virtual dom to allow for this, TemplateView works
