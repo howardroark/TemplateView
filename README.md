@@ -22,6 +22,7 @@ Much like how React works with a virtual dom to allow for this, TemplateView wor
 with [morphdom][9] to accomplish DOM diffing.
 
 > Note: This is still experimental, but that also means you can help make it better!
+> Nothing is set in stone and all discussion and feedback is welcomed with enthusiasm.
 
 ## Usage
 
@@ -57,9 +58,10 @@ Templates must be available in the DOM as `script` tags. Each template `script` 
 must have a data attriube which describes where it should be attached to the DOM as
 rendering occurs.  The data attributes are mapped to jquery's `appendTo`, `prependTo`,
 `insertAfter`, and `insertBefore` in the format of `data-append-to`, `data-prepend-to`,
-`data-insert-after`, and `data-insert-before`.  All templates are parsed with the help
-of [Nunjucks][8].  Nunjucks is a nicely sandboxed template engine that is also known as
-Jinja and Twig in the Python and PHP communities respectively.
+`data-insert-after`, and `data-insert-before`. Much like React each Template must contain
+a single enclosed DOM element. All templates are parsed with the help of [Nunjucks][8].
+Nunjucks is a nicely sandboxed template engine that is also known as Jinja and Twig in 
+the Python and PHP communities respectively.
 
 ### Install
 
