@@ -23,6 +23,41 @@ with [morphdom][9] to accomplish DOM diffing.
 
 > Note: This is still experimental, but that also means you can help make it better!
 
+## Usage
+
+### Views
+
+TemplateView requires pairity between Views and Templates, where each View must be 
+associated with a unique Template. Each extended View can be passed to another one
+as `ChildView`, or as part of the `SubViews` array.  The top most contructed view is
+known the `ancestorView` and is reposible for constructing and rendering all of it's
+decendents. A ChildView is a single extended Class that is acted upon when a contructed 
+`collection` is also passed to it's `parentView` as a constructor option. Each item
+in the collection is contrcuted a ChildView, and the appropriate model is passed into
+the Template context. Each extended SubView Class is passed as part of an array, and each
+item in the array is contructed a View and rendered appropriately. Each View contructor
+must also be passed a `template` selector string to find the Template in the DOM.
+
+### Data
+
+If any View is passed a `model` as a contructor option, it's data will automatically
+become a part of the Template context.  Any changes to the state of that data will trigger
+a full render of the tree. The ancestor View can be passed a unique model known as the 
+`state`.  This data will be extended into every Template context within the tree and changes
+to it will also trigger a new tree render.  Additionally each View can be passed a 
+`templateContext` constructor option as a function which returns dynamic data to the
+Template context.
+
+### Templates
+
+Templates must be available in the DOM as `script` tags. Each template `script` tag
+must have a data attriube which describes where it should be attached to the DOM as
+rendering occurs.  The data attributes are mapped to jquery's `appendTo`, `prependTo`,
+`insertAfter`, and `insertBefore` in the format of `data-append-to`, `data-prepend-to`,
+`data-insert-after`, and `data-insert-before`.  All templates are parsed with the help
+of [Nunjucks][8].  Nunjucks is a nicely sandboxed template engine that is also known as
+Jinja and Twig in the Python and PHP communities respectively.
+
 ### Install
 
 ```
