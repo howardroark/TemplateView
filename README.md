@@ -42,7 +42,8 @@ must also be passed a `template` selector string to find the Template in the DOM
 
 If any View is passed a constructed `model` as a contructor option, it's data will
 automatically become a part of the Template context.  Any changes to the state of
-that data will trigger a full render of the tree. The ancestor View can be passed 
+that data will trigger a full render of the tree. Subsiquently any changes to the
+state of a `collection` will trigger a render as well. The ancestor View can be passed 
 a unique constructed model known as the `state`.  This data will be extended into
 every Template context within the tree and changes to it will also trigger a new
 tree render.  Additionally each View can be passed a `templateContext` constructor
