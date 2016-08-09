@@ -29,8 +29,8 @@ with [morphdom][9] to accomplish DOM diffing.
 
 TemplateView requires pairity between Views and Templates, where each View must be 
 associated with a unique Template. Each extended View can be passed to another one
-as `ChildView`, or as part of the `SubViews` array.  The top most contructed view is
-known the `ancestorView` and is reposible for constructing and rendering all of it's
+as `ChildView`, or as part of the `SubViews` array.  The top most contructed View is
+known as the `ancestorView` and is reposible for constructing and rendering all of it's
 decendents. A ChildView is a single extended Class that is acted upon when a contructed 
 `collection` is also passed to it's `parentView` as a constructor option. Each item
 in the collection is contrcuted a ChildView, and the appropriate model is passed into
