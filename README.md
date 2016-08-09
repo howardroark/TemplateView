@@ -23,9 +23,22 @@ with [morphdom][9] to accomplish DOM diffing.
 
 > Note: This is still experimental, but that also means you can help make it better!
 
-You can find an example "todomvc" app [here][10].
+### Install
+
+```
+$ bower install templateview
+```
+
+### Develop
+
+```
+$ npm install
+$ npm start
+```
 
 ## Example
+
+You can find the example todo app code [here][10].
 
 ##### HTML
 
@@ -273,18 +286,6 @@ $(function () {
 });
 ```
 
-### Install
-
-```
-$ bower install templateview
-```
-
-### Develop
-
-```
-$ npm install
-$ npm start
-```
 
 [0]: https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
