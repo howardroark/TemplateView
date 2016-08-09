@@ -49,6 +49,7 @@ You can find the example todo app code [here][10].
 
 <link rel="stylesheet" href="vendor/todomvc-app-css/index.css">
 
+<!-- Requires jquery, underscore, backbone, morphdom, and nunjucks -->
 <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="vendor/underscore/underscore.js"></script>
 <script type="text/javascript" src="vendor/backbone/backbone.js"></script>
@@ -56,10 +57,12 @@ You can find the example todo app code [here][10].
 <script type="text/javascript" src="vendor/nunjucks/browser/nunjucks.js"></script>
 <script type="text/javascript" src="templateview.js"></script>
 
+<!-- Optional, but it's a great tool for persisting data -->
 <script type="text/javascript" src="vendor/backbone.localStorage/backbone.localStorage.js"></script>
 
 <script type="text/javascript" src="script.js"></script>
 
+<!-- Each template tag requires an id and a data attribute defining where it goes in the DOM -->
 <script type="text/template" id="mainView" data-prepend-to="body">
     <div class="container">
         <!-- ^ Like React you always need a single container ^ -->
@@ -94,12 +97,14 @@ You can find the example todo app code [here][10].
     </div>
 </script>
 
+<!-- The data attributes line up with jquery's attach methods (instertAfter, appendTo etc...) -->
 <script type="text/template" id="formView" data-insert-after="& header h1">
     <form>
         <input class="new-todo" placeholder="What needs to be done?" autofocus="">
     </form>
 </script>
 
+<!-- Similar to SASS, "&" represents the "el" of the parent TemplateView -->
 <script type="text/template" id="itemView" data-append-to="& .todo-list">
     {% if status == filter or filter == 'all' %}
         {% set display = 'block' %}
