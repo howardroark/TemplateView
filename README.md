@@ -74,7 +74,7 @@ $ npm install
 $ npm start
 ```
 
-## Example
+### Example
 
 You can find the example todo app code [here][10].
 
@@ -100,7 +100,7 @@ You can find the example todo app code [here][10].
 
 <script type="text/javascript" src="script.js"></script>
 
-<!-- Each template tag requires an id and a data attribute defining where it goes in the DOM -->
+<!-- Each template tag requires a data attribute defining where it will be attached to the DOM -->
 <script type="text/template" id="mainView" data-prepend-to="body">
     <div class="container">
         <!-- ^ Like React you always need a single container ^ -->
