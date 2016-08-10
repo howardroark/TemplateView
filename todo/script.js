@@ -132,15 +132,19 @@ var MainView = TemplateView.extend({
         if (activeItems.length === 0) {
             status = 'active';
         }
+        // Backbone does not have a "bulk" save method for collections, this is to avoid excess events
         for (var i = 0; i < this.collection.length; i++) {
-            this.collection.models[i].save('status', status);
+            this.collection.models[i].save({status:status},{silent:true});
         }
+        this.ancestorView.render();
     },
     clearCompleted: function () {
         var completedItems = this.collection.where({ status: 'completed' });
+        // Backbone does not have a "bulk" destroy method for collections, this is to avoid excess events
         for (var i = 0; i < completedItems.length; i++) {
-            completedItems[i].destroy();
+            completedItems[i].destroy({silent: true});
         }
+        this.ancestorView.render();
         return false;
     }
 });
@@ -148,11 +152,13 @@ var MainView = TemplateView.extend({
 var main = new MainView();
 
 $(function () {
-    if ('ontouchstart' in document.documentElement === false) {
-        $('html').addClass('no-touch');
-    }
     Backbone.history.start();
     state.fetch();
     todos.fetch();
     main.render();
 });
+
+// Polyfill type stuff not directly related
+if ('ontouchstart' in document.documentElement === false) {
+    $('html').addClass('no-touch');
+}
