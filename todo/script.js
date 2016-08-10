@@ -148,6 +148,9 @@ var MainView = TemplateView.extend({
 var main = new MainView();
 
 $(function () {
+    if('ontouchstart' in document.documentElement === false) {
+        $('html').addClass('no-touch');
+    }
     Backbone.history.start();
     state.fetch();
     todos.fetch();

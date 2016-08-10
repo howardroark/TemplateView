@@ -2,6 +2,8 @@
 
 <title>TempalteView</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="vendor/todomvc-app-css/index.css">
 
 <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
@@ -51,7 +53,8 @@
 
 <script type="text/template" id="formView" data-insert-after="& header h1">
     <form>
-        <input class="new-todo" placeholder="What needs to be done?" autofocus="">
+        <input class="new-todo" placeholder="What needs to be done?" autofocus="" />
+        <input type="submit" style="position: absolute; visibility: hidden;" />
     </form>
 </script>
 
