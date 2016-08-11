@@ -65,6 +65,10 @@ a single enclosed DOM element. All templates are parsed with the help of [Nunjuc
 Nunjucks is a nicely sandboxed template engine that is also known as Jinja and Twig in 
 the Python and PHP communities respectively.
 
+### Example
+
+You can find the example todo app code [here][10], it's only two files (index.html & script.js).
+
 ### Install
 
 ```
@@ -77,10 +81,6 @@ $ bower install templateview
 $ npm install
 $ npm start
 ```
-
-### Example
-
-You can find the example todo app code [here][10], it's only two files (index.html & script.js).
 
 
 [0]: https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square
