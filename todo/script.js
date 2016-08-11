@@ -75,7 +75,7 @@ var ItemView = TemplateView.extend({
         var $listItem = $(e.target.parentNode.parentNode);
         var $input = $listItem.find('.edit');
         $listItem.addClass('editing');
-        // http://stackoverflow.com/a/1056406/4241697 
+        // http://stackoverflow.com/a/1056406/4241697
         $input.focus().val($input.val());
     },
     escape: function (e) {
