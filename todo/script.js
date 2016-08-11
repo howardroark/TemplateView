@@ -140,11 +140,9 @@ var MainView = TemplateView.extend({
     },
     clearCompleted: function () {
         var completedItems = this.collection.where({ status: 'completed' });
-        // Backbone does not have a "bulk" destroy method for collections, this is to avoid excess events
         for (var i = 0; i < completedItems.length; i++) {
-            completedItems[i].destroy({silent: true});
+            completedItems[i].destroy();
         }
-        this.ancestorView.render();
         return false;
     }
 });
