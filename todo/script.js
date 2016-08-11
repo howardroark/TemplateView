@@ -17,8 +17,7 @@ var state = new State({id: 'todos'});
 
 var Todo = Backbone.Model.extend({
     defaults: {
-        status: 'active',
-        isEditing: false
+        status: 'active'
     }
 });
 
@@ -65,31 +64,33 @@ var FormView = TemplateView.extend({
 var ItemView = TemplateView.extend({
     template: '#itemView',
     events: {
-        dblclick:'edit',
-        keydown: 'escape',
-        'submit .editForm':'submitForm',
-        'blur .edit':'blurInput',
+        'dblclick label':'edit',
+        'keydown input': 'escape',
+        'submit .editForm':'submit',
+        'blur .edit':'blur',
         'click .toggle':'toggle',
         'click .destroy':'destroy'
     },
     edit: function (e) {
-        this.model.save({
-            isEditing: true
-        });
-        $(e.currentTarget).find('input').focus().select();
+        var $listItem = $(e.target.parentNode.parentNode);
+        var $input = $listItem.find('.edit');
+        $listItem.addClass('editing');
+        // http://stackoverflow.com/a/1056406/4241697 
+        $input.focus().val($input.val());
     },
     escape: function (e) {
         if (e.which === 27) {
-            this.model.save({
-                isEditing: false
-            });
+            var $listItem = $(e.target.parentNode.parentNode);
+            var $input = $listItem.find('.edit');
+            $listItem.removeClass('editing');
+            $input.val(this.model.get('label'));
         }
     },
-    submitForm: function (e) {
+    submit: function (e) {
         this.update(e.target[0].value);
         return false;
     },
-    blurInput: function (e) {
+    blur: function (e) {
         this.update(e.target.value);
         return false;
     },
@@ -98,7 +99,6 @@ var ItemView = TemplateView.extend({
             this.model.destroy();
         } else {
             this.model.save({
-                isEditing: false,
                 label: label
             });
         }
