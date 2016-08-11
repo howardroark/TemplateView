@@ -1,3 +1,10 @@
+$(function () {
+    Backbone.history.start();
+    state.fetch();
+    todos.fetch();
+    main.render();
+});
+
 // Domain
 var State = Backbone.Model.extend({
     localStorage: new Backbone.LocalStorage('state'),
@@ -132,29 +139,15 @@ var MainView = TemplateView.extend({
         if (activeItems.length === 0) {
             status = 'active';
         }
-        // Backbone does not have a "bulk" save method for collections, this is to avoid excess events
-        for (var i = 0; i < this.collection.length; i++) {
-            this.collection.models[i].save({status:status},{silent:true});
-        }
-        this.ancestorView.render();
+        this.collection.save({ status: status });
     },
     clearCompleted: function () {
-        var completedItems = this.collection.where({ status: 'completed' });
-        for (var i = 0; i < completedItems.length; i++) {
-            completedItems[i].destroy();
-        }
+        this.collection.destroy({ status: 'completed' });
         return false;
     }
 });
 
 var main = new MainView();
-
-$(function () {
-    Backbone.history.start();
-    state.fetch();
-    todos.fetch();
-    main.render();
-});
 
 // Polyfill type stuff not directly related
 if ('ontouchstart' in document.documentElement === false) {

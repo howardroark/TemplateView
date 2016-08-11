@@ -333,3 +333,25 @@ var TemplateView = Backbone.View.extend({
         }
     }
 });
+
+Backbone.Collection.prototype.save = function(data, searchData) {
+    var models = this.models;
+    if (typeof searchData == 'undefined') {
+        models = this.where(searchData);
+    }
+    for(var i = 0; i < models.length; i++) {
+        models[i].save(data, {silent: true});
+    }
+    this.trigger('change');
+};
+
+Backbone.Collection.prototype.destroy = function(searchData) {
+    var models = this.models;
+    if (typeof searchData != 'undefined') {
+        models = this.where(searchData);
+    }
+    // Silent event mode for destroy does not properly sync
+    for(var i = 0; i < models.length; i++) {
+        models[i].destroy();
+    }
+};
