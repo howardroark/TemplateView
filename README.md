@@ -30,7 +30,7 @@ with [morphdom][9] to accomplish DOM diffing.
 
 ### Example
 
-You can find the example todo app code [here][10], it's only two files (index.html & script.js).
+You can find the TodoMVC style example [here][10], and have a look at the [code][11].
 
 ### Views
 
@@ -93,4 +93,5 @@ $ npm start
 [7]: https://facebook.github.io/flux/docs/overview.html
 [8]: https://github.com/mozilla/nunjucks
 [9]: https://github.com/patrick-steele-idem/morphdom
-[10]: https://github.com/howardroark/TemplateView/tree/gh-pages
+[10]: https://howardroark.github.io/TemplateView/
+[11]: https://github.com/howardroark/TemplateView/tree/gh-pages
