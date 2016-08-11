@@ -28,6 +28,10 @@ with [morphdom][9] to accomplish DOM diffing.
 
 ## Usage
 
+### Example
+
+You can find the example todo app code [here][10], it's only two files (index.html & script.js).
+
 ### Views
 
 TemplateView requires pairity between Views and Templates, where each View must be 
@@ -64,10 +68,6 @@ rendering occurs.  The data attributes are mapped to jquery's `appendTo`, `prepe
 a single enclosed DOM element. All templates are parsed with the help of [Nunjucks][8].
 Nunjucks is a nicely sandboxed template engine that is also known as Jinja and Twig in 
 the Python and PHP communities respectively.
-
-### Example
-
-You can find the example todo app code [here][10], it's only two files (index.html & script.js).
 
 ### Install
 
