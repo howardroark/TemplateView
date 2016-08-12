@@ -83,7 +83,11 @@ $ npm start
 The current release (`v0`) is all about enabling the concept with familiar patterns. 
 The next release (`v1`) will be about moving more control to the Template and
 simplifying the View even more.  This will involve things like iterating collections
-and building Views.  Conversation and contributions are very welcome!
+and building Views.  
+
+Conversation and contributions are very welcome! If you've tried out the current version
+and have feedback then make an issue.  Don't worry about duplicates or whatever, just go
+for it!
 
 
 [0]: https://img.shields.io/badge/stability-stable-green.svg?style=flat-square
