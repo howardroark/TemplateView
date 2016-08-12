@@ -16,4 +16,4 @@ before_install:
 script:
   - npm run vendor
   - cd /home/travis/build/howardroark/TemplateView/tests && npm install
-  - npm run server & cd /home/travis/build/howardroark/TemplateView/tests && npm test
+  - cd /home/travis/build/howardroark/TemplateView && npm run server & cd /home/travis/build/howardroark/TemplateView/tests && npm test
