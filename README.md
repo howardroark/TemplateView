@@ -1,7 +1,6 @@
 # TemplateView
 
 [![Join the chat at https://gitter.im/howardroark/TemplateView](https://badges.gitter.im/howardroark/TemplateView.svg)](https://gitter.im/howardroark/TemplateView?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![stability][0]][1]
 [![Bower version][2]][3]
 
@@ -22,9 +21,6 @@ various UI states that an app may require.
 
 Much like how React works with a virtual dom to allow for this, TemplateView works
 with [morphdom][9] to accomplish DOM diffing.
-
-> Note: This is still experimental, but that also means you can help make it better!
-> Nothing is set in stone and all discussion and feedback is welcomed with enthusiasm.
 
 ## Usage
 
@@ -82,8 +78,15 @@ $ npm install
 $ npm start
 ```
 
+### What's next? (How can I help?)
 
-[0]: https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square
+The current release (`v0`) is all about enabling the concept with familiar patterns. 
+The next release (`v1`) will be about moving more control to the Template and
+simplifying the View even more.  This will involve things like iterating collections
+and building Views.  Conversation and contributions are very welcome!
+
+
+[0]: https://img.shields.io/badge/stability-stable-green.svg?style=flat-square
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
 [2]: https://badge.fury.io/bo/templateview.svg
 [3]: https://badge.fury.io/bo/templateview
