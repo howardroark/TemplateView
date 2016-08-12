@@ -1,9 +1,9 @@
 {
   "name": "templateview",
   "description": "A React and Marionette inspired Backbone.js View for Template Designers.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "scripts": {
-    "install": "bower install",
+    "vendor": "bower install",
     "start": "harp server todo & browser-sync start --proxy http://localhost:9000 --files templateview.js --files todo/.",
     "compile": "harp compile todo www && rm www/templateview.js",
     "update": "cd www && sed -i.bak 's;templateview.js;vendor/templateview/templateview.js;g' index.html && rm index.html.bak",

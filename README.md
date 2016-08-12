@@ -81,6 +81,7 @@ $ npm install templateview
 ```
 $ npm install
 $ npm start
+$ npm run vendor
 ```
 
 ## What's next? (How can I help?)
