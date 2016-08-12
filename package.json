@@ -4,7 +4,7 @@
   "version": "0.3.3",
   "scripts": {
     "vendor": "bower install",
-    "server": "http-server todo -p 9000",
+    "server": "http-server todo -s -p 9000",
     "sync": "browser-sync start --proxy http://localhost:9000 --files templateview.js --files todo/.",
     "start": "npm run server & npm run sync",
     "copy": "cp -r todo www && rm www/templateview.js",
