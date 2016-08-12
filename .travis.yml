@@ -13,7 +13,9 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - wget 'https://www.googleapis.com/download/storage/v1/b/chromium-browser-snapshots/o/Linux%2F382086%2Fchrome-linux.zip?generation=1458337367735000&alt=media' -O chrome.zip && unzip chrome.zip
-script:
+before_script:
   - npm run vendor
   - cd /home/travis/build/howardroark/TemplateView/tests && npm install
-  - cd /home/travis/build/howardroark/TemplateView && npm run server & cd /home/travis/build/howardroark/TemplateView/tests && npm test
+  - cd /home/travis/build/howardroark/TemplateView && npm run server &
+script:
+  - cd /home/travis/build/howardroark/TemplateView/tests && npm test
