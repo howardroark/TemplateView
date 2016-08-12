@@ -14,7 +14,7 @@
   ],
   "devDependencies": {
     "backbone.localStorage": "^1.1.16",
-    "todomvc-app-css": "howardroark/todomvc-app-css",
+    "todomvc-app-css-fork": "^3.0.1",
     "templateview": "^0.3.0"
   },
   "dependencies": {
