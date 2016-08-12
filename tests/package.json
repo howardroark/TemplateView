@@ -11,7 +11,6 @@
     "drool": "0.4.0"
   },
   "scripts": {
-    "test": "node memory.js && mocha allTests.js --no-timeouts --reporter spec",
-    "test-ci": "mocha allTests.js --no-timeouts --reporter spec"
+    "test": "node memory.js && mocha allTests.js --no-timeouts --reporter spec"
   }
 }
