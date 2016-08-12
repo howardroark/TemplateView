@@ -78,7 +78,7 @@ $ npm install
 $ npm start
 ```
 
-### What's next? (How can I help?)
+## What's next? (How can I help?)
 
 The current release (`v0`) is all about enabling the concept with familiar patterns. 
 The next release (`v1`) will be about moving more control to the Template and
