@@ -1,7 +1,7 @@
 {
   "name": "templateview",
   "description": "A React and Marionette inspired Backbone.js View for Template Designers.",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "scripts": {
     "vendor": "bower install",
     "start": "harp server todo & browser-sync start --proxy http://localhost:9000 --files templateview.js --files todo/.",
@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "backbone": "^1.3.3",
-    "backbone.localstorage": "^1.1.16",
     "jquery": "^3.1.0",
     "morphdom": "^2.0.2",
     "nunjucks": "^2.4.2",
