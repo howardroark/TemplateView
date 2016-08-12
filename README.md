@@ -84,6 +84,16 @@ $ npm run vendor
 $ npm start
 ```
 
+### Test
+
+Ensure the above dev server is running before you run the tests.
+
+```
+$ cd tests
+$ npm install
+$ npm test
+```
+
 ## What's next? (How can I help?)
 
 The current release (`v0`) is all about enabling the concept with familiar patterns. 
