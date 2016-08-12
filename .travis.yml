@@ -14,5 +14,5 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - wget 'https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots' -O chrome.zip && unzip chrome.zip
 script:
-  - npm install && npm run vendor && npm start
+  - npm run vendor && npm start
   - cd tests && npm install && npm test
