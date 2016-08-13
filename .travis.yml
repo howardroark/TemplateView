@@ -6,12 +6,13 @@ cache:
   directories:
     - tests/node_modules
     - node_modules
-    - chromium-source
 env:
   global:
     - CHROME_PATH: '/home/travis/build/howardroark/TemplateView/chrome-linux/chrome'
 before_install:
-  - ./tests/setup-CI.sh
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - wget 'https://download-chromium.appspot.com/dl/Linux_x64?type=continuous' -O chrome.zip && unzip chrome.zip
 before_script:
   - npm run vendor
   - cd /home/travis/build/howardroark/TemplateView/tests && npm install
