@@ -139,10 +139,15 @@ var MainView = TemplateView.extend({
         if (activeItems.length === 0) {
             status = 'active';
         }
-        this.collection.save({ status: status });
+        this.collection.where({ status: status }).forEach(function (model) {
+            model.save({ status: status }, { silent: true });
+        });
+        this.trigger('change');
     },
     clearCompleted: function () {
-        this.collection.destroy({ status: 'completed' });
+        this.collection.where({ status: 'completed' }).forEach(function (model) {
+            model.destroy();
+        });
         return false;
     }
 });
@@ -153,25 +158,3 @@ var main = new MainView();
 if ('ontouchstart' in document.documentElement === false) {
     $('html').addClass('no-touch');
 }
-
-Backbone.Collection.prototype.save = function (data, searchData) {
-    var models = this.models;
-    if (typeof searchData == 'undefined') {
-        models = this.where(searchData);
-    }
-    for (var i = 0; i < models.length; i++) {
-        models[i].save(data, {silent: true});
-    }
-    this.trigger('change');
-};
-
-Backbone.Collection.prototype.destroy = function (searchData) {
-    var models = this.models;
-    if (typeof searchData != 'undefined') {
-        models = this.where(searchData);
-    }
-    // Silent event mode for destroy does not properly sync
-    for (var i = 0; i < models.length; i++) {
-        models[i].destroy();
-    }
-};
