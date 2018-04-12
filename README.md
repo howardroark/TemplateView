@@ -5,6 +5,10 @@
 [![Bower version][2]][3]
 [![npm version](https://badge.fury.io/js/templateview.svg)](https://badge.fury.io/js/templateview)
 
+### Example
+
+[Code](https://github.com/howardroark/TemplateView/blob/gh-pages/index.html) / [Demo](https://howardroark.github.io/TemplateView/)
+
 ## What?
 
 TemplateView is an extension of [Backbone][4]'s View class, and is inspired by
@@ -24,10 +28,6 @@ Much like how React works with a virtual dom to allow for this, TemplateView wor
 with [morphdom][9] to accomplish DOM diffing.
 
 ## Usage
-
-### Example
-
-You can find the TodoMVC style example [here][10], and have a look at the [code][11].
 
 ### Views
 
