@@ -63,45 +63,6 @@ a single enclosed DOM element. All templates are parsed with the help of [Nunjuc
 Nunjucks is a nicely sandboxed template engine that is also known as Jinja and Twig in 
 the Python and PHP communities respectively.
 
-### Install
-
-```
-$ bower install templateview
-```
-or
-```
-$ npm install templateview
-```
-
-### Develop
-
-```
-$ npm install
-$ npm run vendor
-$ npm start
-```
-
-### Test
-
-Ensure the above dev server is running before you run the tests.
-
-```
-$ cd tests
-$ npm install
-$ npm test
-```
-
-## What's next? (How can I help?)
-
-The current release (`v0`) is all about enabling the concept with familiar patterns. 
-The next release (`v1`) will be about moving more control to the Template and
-simplifying the View even more.  This will involve things like iterating collections
-and building Views.  
-
-Conversation and contributions are very welcome! If you've tried out the current version
-and have feedback then make an issue.  Don't worry about duplicates or whatever, just go
-for it!
-
 
 [0]: https://img.shields.io/badge/stability-stable-green.svg?style=flat-square
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
