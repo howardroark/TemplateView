@@ -1,5 +1,6 @@
 language: node_js
 install: false
+script: exit 0
 deploy:
   provider: pages
   skip-cleanup: true
