@@ -1,3 +1,4 @@
+language: false
 install: false
 deploy:
   provider: pages
