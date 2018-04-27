@@ -1,4 +1,4 @@
-language: false
+language: node_js
 install: false
 deploy:
   provider: pages
