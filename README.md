@@ -1,9 +1,6 @@
 # TemplateView
 
 [![Join the chat at https://gitter.im/howardroark/TemplateView](https://badges.gitter.im/howardroark/TemplateView.svg)](https://gitter.im/howardroark/TemplateView?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![stability][0]][1]
-[![Bower version][2]][3]
-[![npm version](https://badge.fury.io/js/templateview.svg)](https://badge.fury.io/js/templateview)
 
 ### Example
 
