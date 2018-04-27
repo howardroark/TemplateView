@@ -1,24 +1,7 @@
-sudo: false
-language: node_js
-node_js:
-  - 'stable'
-cache:
-  directories:
-    - tests/node_modules
-    - node_modules
-services:
-  - docker
-env:
-  global:
-    - CHROME_PATH: '/home/travis/build/howardroark/TemplateView/chrome-linux/chrome'
-before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  #- wget 'https://download-chromium.appspot.com/dl/Linux_x64?type=continuous' -O chrome.zip && unzip chrome.zip
-  - docker run janx/chromium ninja -C out/Release chrome -j18
-before_script:
-  - npm run vendor
-  - cd /home/travis/build/howardroark/TemplateView/tests && npm install
-  - cd /home/travis/build/howardroark/TemplateView && npm run server &
-script:
-  - cd /home/travis/build/howardroark/TemplateView/tests && npm test
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: develop
